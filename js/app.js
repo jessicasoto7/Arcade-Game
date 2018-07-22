@@ -39,14 +39,18 @@ var Player = function (x, y) {
 };
 
 Player.prototype.update = function() {
-    if (this.x < Enemy.x + 83 &&
-   		this.x + 83 > Enemy.x &&
-   		this.y < Enemy.y + 101 &&
-   		101 + this.y >Enemy.y) {
-    		this.x = 202;
+	allEnemies.forEach(enemy => {
+		if(this.y === enemy.y && 
+		   this.x < enemy.x + 83 &&
+   		   this.x + 83 > enemy.x &&
+   		   this.y < enemy.y + 101 &&
+   		  101 + this.y >enemy.y) {
+			console.log("Collide!");
+		    this.x = 200;
     		this.y = 405;
-   			console.log("Collison!");
 		}
+		console.log(this.y, enemy.y);
+	});
 };
 
 Player.prototype.render = function() {
@@ -62,18 +66,26 @@ Player.prototype.handleInput = function(input) {
 		this.x += 101;
 	} else if (input == 'down' && this.y < 405) {
 		this.y += 83;
-	}
+	} 
+
+	if (this.y < 0) {
+		alert("Congrats, you made it to the other side!");
+		this.x = 200;
+    	this.y = 405;
+    }
 };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy(101, 60);
-var enemy2 = new Enemy(101, 140);
-var enemy3 = new Enemy(101, 230);
+var enemy1 = new Enemy(101, 73);
+var enemy2 = new Enemy(101, 156);
+var enemy3 = new Enemy(101, 239);
 var allEnemies = [enemy1, enemy2, enemy3];
 
+
+
 // Place the player object in a variable called player
-var player = new Player(202, 405);
+var player = new Player(200, 405);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
