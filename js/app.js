@@ -1,3 +1,4 @@
+
 // Enemies our player must avoid
 var Enemy = function(x,y) {
     // Variables applied to each of our instances go here,
@@ -38,6 +39,10 @@ var Player = function (x, y) {
 	this.y = y;
 };
 
+var heart = document.querySelector(".hearts");
+var livesUsed = [];
+
+
 Player.prototype.update = function() {
 	allEnemies.forEach(enemy => {
 		if(this.y === enemy.y && 
@@ -45,12 +50,21 @@ Player.prototype.update = function() {
    		   this.x + 83 > enemy.x &&
    		   this.y < enemy.y + 101 &&
    		  101 + this.y >enemy.y) {
-			console.log("Collide!");
+			heart.removeChild(heart.lastElementChild);
+		    livesUsed.push(heart);
 		    this.x = 200;
-    		this.y = 405;
+  			this.y = 405; 			
 		}
-		console.log(this.y, enemy.y);
+		if (livesUsed.length == 3) {
+			console.log("You lost");
+    		alert("You lost, sorry!");
+    		location.reload();
+		}
 	});
+}
+
+function losingGame() {
+	
 };
 
 Player.prototype.render = function() {
@@ -67,11 +81,9 @@ Player.prototype.handleInput = function(input) {
 	} else if (input == 'down' && this.y < 405) {
 		this.y += 83;
 	} 
-
 	if (this.y < 0) {
-		alert("Congrats, you made it to the other side!");
-		this.x = 200;
-    	this.y = 405;
+		alert("Congrats, you made it to the other side! Lets play again!");
+		location.reload();
     }
 };
 
