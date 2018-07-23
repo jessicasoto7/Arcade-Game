@@ -74,11 +74,17 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(input) {
     if (input == 'left' && this.x > 0) {
         this.x -= 101;
-    } else if (input == 'up' && this.y > 0) {
+    }
+
+    if (input == 'up' && this.y > 0) {
         this.y -= 83;
-    } else if (input == 'right' && this.x < 405) {
+    }
+
+    if (input == 'right' && this.x < 405) {
         this.x += 101;
-    } else if (input == 'down' && this.y < 405) {
+    }
+
+    if (input == 'down' && this.y < 405) {
         this.y += 83;
     }
     if (this.y < 0) {

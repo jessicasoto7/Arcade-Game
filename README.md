@@ -18,10 +18,7 @@ You will start with 3 lives.
 
 2 Ladybug attack = 1 life left.
 
-3 Ladybug attack = 0 life left.
-
-4 Ladybug attack = Game Over!
-
+3 Ladybug attack = Game Over.
 
 ## Download
 
