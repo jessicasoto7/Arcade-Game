@@ -80,7 +80,7 @@ Player.prototype.handleInput = function(input) {
         this.y -= 83;
     }
 
-    if (input == 'right' && this.x < 405) {
+    if (input == 'right' && this.x < 400) {
         this.x += 101;
     }
 
