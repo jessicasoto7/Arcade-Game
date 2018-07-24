@@ -10,7 +10,9 @@
 
 ## Instructions
 
-Get to the otherside before being attacked by the ladybugs.
+To load the game locally(download/clone and open index.html in your browser.)
+
+Use your arrow keys to move your player to the otherside before being attacked by the ladybugs.
 
 You will start with 3 lives.
 
